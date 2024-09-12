@@ -1,8 +1,45 @@
-.body{
-  background-color: #2633ee;
+body{
+  background-color: #f5eeec;
 }
 
-.nav{
-  width: 100%;
-  border-color: red;
+h1{
+  margin-top: 10%;
+  text-align: center;
+}
+
+#panelPrincipal{
+  display: flex;
+  flex-direction: column;
+}
+
+#navbar {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Centra los botones verticalmente si es necesario */
+  gap: 20px; /* Espacio entre los botones */
+  flex-wrap: wrap; /* Hace que los botones se alineen en varias filas si no caben en una sola */
+  padding: 20px;
+}
+
+/* Estilo para los botones */
+.btnNav {
+  padding: 10px 20px; /* Espaciado interno del botón */
+  border: 2px solid black; /* Borde con estilo solid */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza la transición de color de fondo y texto */
+  text-align: center; /* Centra el texto dentro del botón */
+}
+
+/* Efecto hover para cambiar el color del fondo y del texto */
+.btnNav:hover {
+  background-color: black; /* Cambia el fondo al pasar el cursor */
+  color: white; /* Cambia el color del texto al pasar el cursor */
+}
+
+#panelInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

@@ -6,15 +6,83 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>HOGAR_MOBLE_N1</title>
     <link type="text/css" rel="stylesheet" href="rsc/styles.css" />
+    <link rel="stylesheet" href="rsc/bootstrap-5.3.3-dist/css/bootstrap.min.css">
   </head>
+
   <body>
-    <h1>HOLA, SOC TONISOR DE HOGAR MOBLE!</h1>
-    <nav id="navbar">
-      <a class="nav-link" href="">Intro</a>
-      <a class="nav-link" href="">Cap_1</a>
-      <a class="nav-link" href="">Cap_2</a>
-      <a class="nav-link" href="">Cap_3</a>
-      <a class="nav-link" href="">Cap_4</a>
-    </nav>
+    <h1>HOGAR MOBLE Nº1</h1>
+    <div id="panelPrincipal" class="container">
+      <div id="navbar">
+        <div type ="button" id="btnColecciones" class="btnNav">COLECCIONES</div>
+        <div type ="button" id="btnServicios" class="btnNav">SERVICIOS</div>
+        <div type ="button" id="btnQuienesSomos" class="btnNav">¿QUIENES SOMOS?</div>
+        <div type ="button" id="btnDondeEstamos" class="btnNav">¿DONDE ESTAMOS?</div>
+      </div>
+      <div id="panelInfo" class="container"></div>
+    </div>
+
+    <!-- Incluye jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Script que depende de jQuery -->
+    <script>
+$(document).ready(function() {
+        // Contenido inicial del menú principal
+        const contenidoPrincipal = '<p>Bienvenido al menú principal.</p>';
+        let paginaActual = ''; // Variable para guardar la página actual
+        let pagina = "menuPrincipal.html";
+
+        //Carga inicial del menu principal
+        $('#panelInfo').load("menuPrincipal.html", function(response, status, xhr) {
+              if (status == "error") {
+                $('#panelInfo').html("<p>Error al cargar la página.</p>");
+              } else {
+                paginaActual = pagina; // Actualiza la página actual cargada
+              }
+            });
+
+        // Función para cargar una página y verificar si ya está cargada
+        function cargarPagina(pagina) {
+          if (paginaActual === pagina) {
+            pagina = "menuPrincipal.html";
+            // Si la página ya está cargada, regresar al menú principal
+            $('#panelInfo').load(pagina, function(response, status, xhr) {
+              if (status == "error") {
+                $('#panelInfo').html("<p>Error al cargar la página.</p>");
+              } else {
+                paginaActual = pagina; // Actualiza la página actual cargada
+              }
+            });
+            paginaActual = ''; // Restablece la página actual
+          } else {
+            // Cargar la nueva página
+            $('#panelInfo').load(pagina, function(response, status, xhr) {
+              if (status == "error") {
+                $('#panelInfo').html("<p>Error al cargar la página.</p>");
+              } else {
+                paginaActual = pagina; // Actualiza la página actual cargada
+              }
+            });
+          }
+        }
+
+        // Eventos click para cargar páginas externas
+        $('#btnColecciones').click(function() {
+          cargarPagina("colecciones.html");
+        });
+
+        $('#btnServicios').click(function() {
+          cargarPagina("servicios.html");
+        });
+
+        $('#btnQuienesSomos').click(function() {
+          cargarPagina("quienessomos.html");
+        });
+
+        $('#btnDondeEstamos').click(function() {
+          cargarPagina("contacto.html");
+        });
+      });
+    </script>
   </body>
 </html>
